@@ -52,7 +52,7 @@ def test_login_02():
 def test_pim_01():
     # to create a account for user with login account
     # USER DETAILS
-    # name ="mathew conway", ID =1230, job ="software engineer", role="professional", sub-unit="Adminstration", location="HQ - CA, USA, jobtype="freelance"
+    # name ="mathew conway", ID =1231, job ="software engineer", role="professional", sub-unit="Adminstration", location="HQ - CA, USA, jobtype="freelance"
     service = Service(executable_path=GeckoDriverManager().install())
     driver = webdriver.Firefox(service=service)
     url = "https://opensource-demo.orangehrmlive.com/"
@@ -77,7 +77,7 @@ def test_pim_01():
     driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(Keys.BACK_SPACE)
     driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(Keys.BACK_SPACE)
     driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(Keys.BACK_SPACE)
-    driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(1230)
+    driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(1231)
     time.sleep(3)
     driver.find_element(By.XPATH, "//button[@type='submit']").click()
     time.sleep(10)
@@ -106,7 +106,7 @@ def test_pim_01():
     # to verify if new employee is created
     driver.find_element(By.LINK_TEXT, "PIM").click()
     time.sleep(3)
-    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1230)  #emp id
+    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1231)  #emp id
     time.sleep(3)
     driver.find_element(By.XPATH, "//button[@type='submit']").click() # to click search
     time.sleep(5)
@@ -124,7 +124,7 @@ def test_pim_01():
 def test_pim_02():
     # to modify user details with login account
     # USER DETAILS
-    # name ="mathew conway", ID =1230, job ="software engineer", role="professional", sub-unit="Adminstratio", location="HQ - CA, USA, jobtype="freelance"
+    # name ="mathew conway", ID =1231, job ="software engineer", role="professional", sub-unit="Adminstratio", location="HQ - CA, USA, jobtype="freelance"
     # modifiying details jobtype = "Freelance" to "Full-Time Contract" and addition of salary details
     service = Service(executable_path=GeckoDriverManager().install())
     driver = webdriver.Firefox(service=service)
@@ -139,7 +139,7 @@ def test_pim_02():
     # PIM
     driver.find_element(By.LINK_TEXT, "PIM").click()
     time.sleep(3)
-    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1230)  # emp id
+    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1231)  # emp id
     driver.find_element(By.XPATH, "//button[@type='submit']").click()  # to click search
     time.sleep(5)
     employee_details = driver.find_element(By.XPATH, "//div[@class='orangehrm-container']")  # to check employee details
@@ -185,7 +185,7 @@ def test_pim_02():
         # to verify if employee details is modified
         driver.find_element(By.LINK_TEXT, "PIM").click()
         time.sleep(3)
-        driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1230)  # emp id
+        driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1231)  # emp id
         time.sleep(3)
         driver.find_element(By.XPATH, "//button[@type='submit']").click()  # to click search
         time.sleep(5)
@@ -204,7 +204,7 @@ def test_pim_02():
 
 
 def test_pim_03():
-    # to delete a employee record (emp id = 1230, name = "mathew conway")
+    # to delete a employee record (emp id = 1231, name = "mathew conway")
     service = Service(executable_path=GeckoDriverManager().install())
     driver = webdriver.Firefox(service=service)
     url = "https://opensource-demo.orangehrmlive.com/"
@@ -218,7 +218,7 @@ def test_pim_03():
     # PIM
     driver.find_element(By.LINK_TEXT, "PIM").click()
     time.sleep(3)
-    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1230)  # emp id
+    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1231)  # emp id
     driver.find_element(By.XPATH, "//button[@type='submit']").click()  # to click search
     time.sleep(5)
     employee_details = driver.find_element(By.XPATH, "//div[@class='orangehrm-container']")  # to check employee details
@@ -235,7 +235,7 @@ def test_pim_03():
     # to verify if employee details deleted
     driver.find_element(By.LINK_TEXT, "PIM").click()
     time.sleep(3)
-    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1230)  # emp id
+    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1231)  # emp id
     driver.find_element(By.XPATH, "//button[@type='submit']").click()  # to click search
     time.sleep(5)
     total_record = driver.find_element(By.XPATH, "//div[@class='orangehrm-background-container']/div[2]/div[2]/div/span").text
