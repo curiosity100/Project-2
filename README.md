@@ -1,4 +1,4 @@
-# Guvi-Project-2
+# Project-2
 
 System Description:
 The OrangeHRM System is a web based manages employee photos. Employees can add or
