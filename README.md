@@ -96,3 +96,4 @@ Steps:
 Expected Result:
 The user should be able to delete an existing employee information in the PIM and
 should see a message for successful deletion.
+
