@@ -15,15 +15,15 @@ def test_login_01():
     driver = webdriver.Firefox(service=service)
     url = "https://opensource-demo.orangehrmlive.com/"
     driver.get(url)
-    time.sleep(3)
-    WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Username']")))
+    driver.maximize_window()
+    WebDriverWait(driver, 15).until(ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Username']")))
     driver.find_element(By.XPATH, "//input[@placeholder='Username']").send_keys("Admin")
     driver.find_element(By.XPATH, "// input[@placeholder='Password']").send_keys("admin123")
     driver.find_element(By.XPATH, "//button[@type='submit']").click()
     time.sleep(3)
     # Login success verification
     success_verify = driver.find_element(By.XPATH, "//h6[@class='oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module']").text
-    if success_verify == 'PIM':
+    if success_verify == 'Dashboard':
         print("User is logged in successfully")
     else:
         print("Login failed, Try again")
@@ -35,8 +35,8 @@ def test_login_02():
     driver = webdriver.Firefox(service=service)
     url = "https://opensource-demo.orangehrmlive.com/"
     driver.get(url)
-    time.sleep(3)
-    WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Username']")))
+    driver.maximize_window()
+    WebDriverWait(driver, 15).until(ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Username']")))
     driver.find_element(By.XPATH, "//input[@placeholder='Username']").send_keys("Admin")
     driver.find_element(By.XPATH, "// input[@placeholder='Password']").send_keys("Invalid password")
     driver.find_element(By.XPATH, "//button[@type='submit']").click()
@@ -52,11 +52,12 @@ def test_login_02():
 def test_pim_01():
     # to create a account for user with login account
     # USER DETAILS
-    # name ="mathew conway", ID =1231, job ="software engineer", role="professional", sub-unit="Adminstration", location="HQ - CA, USA, jobtype="freelance"
+    # name ="stephen fleming", ID =5432, job ="software engineer", role="professional", sub-unit="Adminstration", location="Texas R&D", jobtype="freelance"
     service = Service(executable_path=GeckoDriverManager().install())
     driver = webdriver.Firefox(service=service)
     url = "https://opensource-demo.orangehrmlive.com/"
     driver.get(url)
+    driver.maximize_window()
     # Login
     WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Username']")))
     driver.find_element(By.XPATH, "//input[@placeholder='Username']").send_keys("Admin")
@@ -69,25 +70,25 @@ def test_pim_01():
     driver.find_element(By.XPATH, "//button[@class='oxd-button oxd-button--medium oxd-button--secondary']").click()
     time.sleep(3)
     # First name and Last name
-    driver.find_element(By.XPATH, "//input[@name='firstName']").send_keys("mathew")
-    driver.find_element(By.XPATH, "//input[@name='lastName']").send_keys("conway")
+    driver.find_element(By.XPATH, "//input[@name='firstName']").send_keys("stephen")
+    driver.find_element(By.XPATH, "//input[@name='lastName']").send_keys("fleming")
     # Id
     driver.find_element(By.XPATH, "//div[@class='oxd-input-group oxd-input-field-bottom-space']//input[@class='oxd-input oxd-input--active']").click()
     driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(Keys.BACK_SPACE)
     driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(Keys.BACK_SPACE)
     driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(Keys.BACK_SPACE)
     driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(Keys.BACK_SPACE)
-    driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(1231)
+    driver.find_element(By.XPATH, "//input[@class='oxd-input oxd-input--focus']").send_keys(5432)
     time.sleep(3)
     driver.find_element(By.XPATH, "//button[@type='submit']").click()
     time.sleep(10)
     # to add job details
     driver.find_element(By.LINK_TEXT, "Job").click()
     time.sleep(3)
-    # to select software engineer
+    # to select job title as software engineer
     driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/div/div").click()
     driver.find_element(By.XPATH, ("//*[contains(text(), 'Software Engineer')]")).click()
-    # to select professional
+    # to select job category as professional
     driver.find_element(By.XPATH, "//form/div[1]/div/div[4]/div/div[2]/div/div/div[1]").click()
     driver.find_element(By.XPATH, "//*[contains(text(), 'Professionals')]").click()
     # to select sub unit
@@ -95,7 +96,7 @@ def test_pim_01():
     driver.find_element(By.XPATH, "//*[contains(text(), 'Administration')]").click()
     # to select location
     driver.find_element(By.XPATH, "//form/div[1]/div/div[6]/div/div[2]/div/div/div[1]").click()
-    driver.find_element(By.XPATH, "//*[contains(text(), 'HQ - CA, USA')]").click()
+    driver.find_element(By.XPATH, "//*[contains(text(), 'Texas R&D')]").click()
     # to select job type
     driver.find_element(By.XPATH, "//form/div[1]/div/div[7]/div/div[2]/div/div/div[1]").click()
     driver.find_element(By.XPATH, "//*[contains(text(), 'Freelance')]").click()
@@ -106,7 +107,7 @@ def test_pim_01():
     # to verify if new employee is created
     driver.find_element(By.LINK_TEXT, "PIM").click()
     time.sleep(3)
-    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1231)  #emp id
+    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(5432)  #emp id
     time.sleep(3)
     driver.find_element(By.XPATH, "//button[@type='submit']").click() # to click search
     time.sleep(5)
@@ -115,7 +116,7 @@ def test_pim_01():
     time.sleep(3)
     first_name = driver.find_element(By.XPATH, "//div[@class='oxd-table-card']/div/div[3]").text
     last_name = driver.find_element(By.XPATH, "//div[@class='oxd-table-card']/div/div[4]").text
-    if first_name =="mathew" and last_name =="conway":
+    if first_name =="stephen" and last_name =="fleming":
         print("New employee is successfully created")
     else:
         print("New employee addition failed")
@@ -124,12 +125,13 @@ def test_pim_01():
 def test_pim_02():
     # to modify user details with login account
     # USER DETAILS
-    # name ="mathew conway", ID =1231, job ="software engineer", role="professional", sub-unit="Adminstratio", location="HQ - CA, USA, jobtype="freelance"
+    # name ="stephen fleming", ID =5432, job ="software engineer", role="professional", sub-unit="Adminstratio", location="Texas R&D", jobtype="freelance"
     # modifiying details jobtype = "Freelance" to "Full-Time Contract" and addition of salary details
     service = Service(executable_path=GeckoDriverManager().install())
     driver = webdriver.Firefox(service=service)
     url = "https://opensource-demo.orangehrmlive.com/"
     driver.get(url)
+    driver.maximize_window()
     # Login
     WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Username']")))
     driver.find_element(By.XPATH, "//input[@placeholder='Username']").send_keys("Admin")
@@ -139,7 +141,7 @@ def test_pim_02():
     # PIM
     driver.find_element(By.LINK_TEXT, "PIM").click()
     time.sleep(3)
-    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1231)  # emp id
+    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(5432)  # emp id
     driver.find_element(By.XPATH, "//button[@type='submit']").click()  # to click search
     time.sleep(5)
     employee_details = driver.find_element(By.XPATH, "//div[@class='orangehrm-container']")  # to check employee details
@@ -147,8 +149,9 @@ def test_pim_02():
     time.sleep(3)
     first_name = driver.find_element(By.XPATH, "//div[@class='oxd-table-card']/div/div[3]").text
     last_name = driver.find_element(By.XPATH, "//div[@class='oxd-table-card']/div/div[4]").text
-    if first_name == "mathew" and last_name == "conway":
+    if first_name == "stephen" and last_name == "fleming":
         driver.find_element(By.XPATH, "//div[@class='oxd-table-cell-actions']/button[2]").click()
+        time.sleep(3)
         # to add job details
         driver.find_element(By.LINK_TEXT, "Job").click()
         time.sleep(3)
@@ -185,7 +188,7 @@ def test_pim_02():
         # to verify if employee details is modified
         driver.find_element(By.LINK_TEXT, "PIM").click()
         time.sleep(3)
-        driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1231)  # emp id
+        driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(5432)  # emp id
         time.sleep(3)
         driver.find_element(By.XPATH, "//button[@type='submit']").click()  # to click search
         time.sleep(5)
@@ -195,7 +198,7 @@ def test_pim_02():
         first_name = driver.find_element(By.XPATH, "//div[@class='oxd-table-card']/div/div[3]").text
         last_name = driver.find_element(By.XPATH, "//div[@class='oxd-table-card']/div/div[4]").text
         employment_status = driver.find_element(By.XPATH, "//div[@class='oxd-table-card']/div/div[6]").text
-        if first_name == "mathew" and last_name == "conway" and employment_status == "Full-Time Contract":
+        if first_name == "stephen" and last_name == "fleming" and employment_status == "Full-Time Contract":
             print("Employee details modified and salary details added")
         else:
             print("Employee details modification failed")
@@ -204,11 +207,12 @@ def test_pim_02():
 
 
 def test_pim_03():
-    # to delete a employee record (emp id = 1231, name = "mathew conway")
+    # to delete a employee record (emp id = 5432, name = "stephen fleming")
     service = Service(executable_path=GeckoDriverManager().install())
     driver = webdriver.Firefox(service=service)
     url = "https://opensource-demo.orangehrmlive.com/"
     driver.get(url)
+    driver.maximize_window()
     # Login
     WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Username']")))
     driver.find_element(By.XPATH, "//input[@placeholder='Username']").send_keys("Admin")
@@ -218,7 +222,7 @@ def test_pim_03():
     # PIM
     driver.find_element(By.LINK_TEXT, "PIM").click()
     time.sleep(3)
-    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1231)  # emp id
+    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(5432)  # emp id
     driver.find_element(By.XPATH, "//button[@type='submit']").click()  # to click search
     time.sleep(5)
     employee_details = driver.find_element(By.XPATH, "//div[@class='orangehrm-container']")  # to check employee details
@@ -226,7 +230,7 @@ def test_pim_03():
     time.sleep(3)
     first_name = driver.find_element(By.XPATH, "//div[@class='oxd-table-card']/div/div[3]").text
     last_name = driver.find_element(By.XPATH, "//div[@class='oxd-table-card']/div/div[4]").text
-    if first_name == "mathew" and last_name == "conway":
+    if first_name == "stephen" and last_name == "fleming":
         driver.find_element(By.XPATH, "//div[@class='oxd-table-cell-actions']/button[1]").click()
         driver.find_element(By.XPATH, "//div[@role ='document']/div[3]/button[2]").click()
         time.sleep(5)
@@ -235,7 +239,7 @@ def test_pim_03():
     # to verify if employee details deleted
     driver.find_element(By.LINK_TEXT, "PIM").click()
     time.sleep(3)
-    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(1231)  # emp id
+    driver.find_element(By.XPATH, "//form/div[1]/div/div[2]/div/div[2]/input").send_keys(5432)  # emp id
     driver.find_element(By.XPATH, "//button[@type='submit']").click()  # to click search
     time.sleep(5)
     total_record = driver.find_element(By.XPATH, "//div[@class='orangehrm-background-container']/div[2]/div[2]/div/span").text
@@ -243,7 +247,4 @@ def test_pim_03():
         print("Employee details deleted successfully")
     else:
         print("Employee details deletion failed")
-        
-
-
 
