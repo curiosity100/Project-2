@@ -1,13 +1,11 @@
-import sys
-import pytest
-from selenium import webdriver
+import time
 from webdriver_manager.firefox import GeckoDriverManager
+from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-import time
 
 def test_login_01():
     #Positive scenario
@@ -247,4 +245,3 @@ def test_pim_03():
         print("Employee details deleted successfully")
     else:
         print("Employee details deletion failed")
-
